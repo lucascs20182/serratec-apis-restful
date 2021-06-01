@@ -1,3 +1,6 @@
+// representam as colunas do banco de dados
+// cada coluna é um atributo
+
 package org.serratec.backend.projeto05.entities;
 
 import java.util.Date;
@@ -14,8 +17,8 @@ import javax.validation.constraints.Size;
 @Table(name = "LIVRO")
 public class LivroEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id // representa que o atributo id é uma pk
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // autoincrement
 	private Long id;
 
 	@NotNull

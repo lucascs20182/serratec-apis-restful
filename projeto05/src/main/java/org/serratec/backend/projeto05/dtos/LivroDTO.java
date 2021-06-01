@@ -1,3 +1,7 @@
+// seleciona só os atributos da entidade LivroEntity
+// que desejamos passar para o cliente
+// nesse caso, decidimos retirar o id
+
 package org.serratec.backend.projeto05.dtos;
 
 import java.util.Date;
