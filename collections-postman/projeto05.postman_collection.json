@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "f2ab7f7e-735b-4843-89cc-2674ccaae344",
+		"name": "projeto05",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "criar livro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"A lei do triunfo\",\r\n    \"tipo\": \"Autoajuda\",\r\n    \"autor\": \"Napoleon Hill\",\r\n    \"dataPublicacao\": \"1928-06-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/livro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"livro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar livros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/livro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"livro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar livro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/livro/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"livro",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletar livro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/livro/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"livro",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editar livro",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"O poder de deixar pra amanhã\",\r\n    \"tipo\": \"Autoajuda\",\r\n    \"autor\": \"Jéssica e Thiene\",\r\n    \"dataPublicacao\": \"2000-06-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/livro/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"livro",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
