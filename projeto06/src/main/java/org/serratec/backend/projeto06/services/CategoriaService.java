@@ -10,35 +10,45 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CategoriaService {
+
 	@Autowired
 	CategoriaRepository categoriaRepository;
-	
-	public List<CategoriaEntity> getAll(){
+
+	public List<CategoriaEntity> getAll() {
 		return categoriaRepository.findAll();
 	}
-	
-	public CategoriaEntity getOne(Long id) {
-		Optional<CategoriaEntity> categoria= categoriaRepository.findById(id);
+
+	public CategoriaEntity create(CategoriaEntity entity) {
+		return categoriaRepository.save(entity);
+	}
+
+	public CategoriaEntity getById(Long id) {
+		Optional<CategoriaEntity> categoria = categoriaRepository.findById(id);
+
+		if (categoria.isEmpty()) {
+			System.out.println("Id não cadastrado");
+
+			return null;
+		}
+
 		return categoria.get();
 	}
-	
-	public void adicionar(CategoriaEntity categoria) {
-		categoriaRepository.save(categoria);
-	}
-	
-	public void remover(Long id) {
-		categoriaRepository.deleteById(id);
-	}
-	
-	public void atualizar(Long id, CategoriaEntity novosDadosCategoria) {
-		CategoriaEntity categoria=this.getOne(id);
-		if(novosDadosCategoria.getNome()!=null) {
-			categoria.setNome(novosDadosCategoria.getNome());
+
+	public CategoriaEntity update(Long id, CategoriaEntity entity) {
+		CategoriaEntity categoria = this.getById(id);
+
+		if (entity.getNome() != null) {
+			categoria.setNome(entity.getNome());
 		}
-		categoriaRepository.save(categoria);
-		
-//		if(novosDadosLivro.getCategoria()!=null) {
-//			livro.setCategoria(novosDadosLivro.getCategoria());
-//		}
+
+		if (entity.getDescricao() != null) {
+			categoria.setDescricao(entity.getDescricao());
+		}
+
+		return categoriaRepository.save(categoria);
+	}
+
+	public void delete(Long id) {
+		categoriaRepository.deleteById(id);
 	}
 }

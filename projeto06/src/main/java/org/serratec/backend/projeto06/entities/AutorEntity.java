@@ -6,32 +6,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Autor")
+@Table(name = "Autor")
 public class AutorEntity {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotNull
+
 	private String nome;
-	
-	@ManyToMany
-	@JoinTable
+
+	@JsonIgnore
+	@ManyToMany(mappedBy = "autores")
 	private List<LivroEntity> livros;
-
-	public List<LivroEntity> getLivros() {
-		return livros;
-	}
-
-	public void setLivros(List<LivroEntity> livros) {
-		this.livros = livros;
-	}
 
 	public Long getId() {
 		return id;
@@ -48,5 +40,12 @@ public class AutorEntity {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
+	public List<LivroEntity> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<LivroEntity> livros) {
+		this.livros = livros;
+	}
 }

@@ -8,30 +8,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Categoria")
+@Table(name = "Categoria")
 public class CategoriaEntity {
+
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotNull
+
 	private String nome;
-	
-	@OneToMany(mappedBy = "categoria")
-	private List<LivroEntity> livros;
-	
+
 	private String descricao;
 
-	public List<LivroEntity> getLivros() {
-		return livros;
-	}
-
-	public void setLivros(List<LivroEntity> livros) {
-		this.livros = livros;
-	}
+	@JsonIgnore
+	@OneToMany(mappedBy = "categoria")
+	private List<LivroEntity> livros;
 
 	public Long getId() {
 		return id;
@@ -56,5 +50,12 @@ public class CategoriaEntity {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
+	public List<LivroEntity> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<LivroEntity> livros) {
+		this.livros = livros;
+	}
 }
